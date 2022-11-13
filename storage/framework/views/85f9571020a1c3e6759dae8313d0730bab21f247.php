@@ -2,23 +2,24 @@
 <html>
 <head>
     <title>Laravel 8 Form Example Tutorial</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
   <div class="container mt-4">
-  @if(session('status'))
+  <?php if(session('status')): ?>
     <div class="alert alert-success">
-        {{ session('status') }}
+        <?php echo e(session('status')); ?>
+
     </div>
-  @endif
+  <?php endif; ?>
   <div class="card">
     <div class="card-header text-center font-weight-bold">
       Laravel 8 - Add Blog Post Form Example
     </div>
     <div class="card-body">
-      <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{url('store-form')}}">
-       @csrf
+      <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="<?php echo e(url('store-form')); ?>">
+       <?php echo csrf_field(); ?>
         <div class="form-group">
           <label for="exampleInputEmail1">Title</label>
           <input type="text" id="title" name="title" class="form-control" required="">
@@ -34,3 +35,4 @@
 </div>  
 </body>
 </html>
+<?php /**PATH C:\Users\TILA\LaravelForm\resources\views/add-blog-post-form.blade.php ENDPATH**/ ?>

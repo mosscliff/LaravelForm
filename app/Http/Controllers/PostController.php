@@ -6,6 +6,8 @@ class PostController extends Controller
 {
     public function index()
     {
+        $model = new Post;
+        $data=$model->all();
         return view('add-blog-post-form');
     }
     public function store(Request $request)
@@ -15,5 +17,11 @@ class PostController extends Controller
         $post->description = $request->description;
         $post->save();
         return redirect('add-blog-post-form')->with('status', 'Blog Post Form Data Has Been inserted');
+    }
+    public function tampil()
+    {
+    $model = new Post;
+    $data=$model->all();    
+    return view ('tampil',['data'=> $data]);
     }
 }
